@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist</title>
+    <link rel="stylesheet" href="todolist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Level Up</div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">     
+            <i class="fa-solid fa-bars"></i>
+        </label>
+        <ul>
+            <li><a class="active" href="/Webpage1/webpage1.html">Home</a></li>
+            <li><a href="/About/about.html">About</a></li>
+            <li><a href="/Profile/profile.html">Profile</a></li>
+            <li><a href="/ContactUs/contactus.html">Contact</a></li>
+            <li><a href="/TODOList/todolist.html" class="tdl_active">ToDo list</a></li>
+            
+            
+        </ul>
+    </nav>
+    </br>
+        <h1 class = "main_heading">ToDo List</h1>
+        <div class="grid_container">
+            <input type="text" class="todo_input"placeholder="Enter ToDo here">
+            <input type="date" class = "todo_date">
+            <button class="Add_todo">Add</button>
+        </div>
+            <div class="todo_container grid_container"> </div>
+        
+
+
+
+
+
+    <script src="todolist.js"></script>
+  <script src="../../routes/allpageRoutes.js"></script>
+</body>
+</html>

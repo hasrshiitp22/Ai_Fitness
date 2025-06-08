@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;        
+    
+    
+    
+}
+
+nav{
+    height : 80px;
+    background :#1b1b1b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+
+}
+nav .logo{
+    font-size: 33px;
+    color: #fff;
+    font-weight: 600;
+}
+nav ul{
+    display : flex;
+
+}
+nav ul li{
+    margin: 0 5px;
+}
+nav ul li a{
+    color : white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition : all 0.5s ease;
+
+}
+nav ul li a:hover,
+nav ul li a.tdl_active{
+    color : #1b1b1b;
+    background:#fff;
+    
+}
+nav .menu-btn{
+    color:#fff;
+    font-size: 22px;
+    cursor :pointer;
+    display: none;
+}
+#click{
+    display:none;
+}
+@media(max-width:740px){
+    nav .menu-btn{
+        display: block;
+    }
+    nav ul{
+        position: fixed;            /* first*/
+        top:80px;
+        left : -100%;
+        background:#111;
+        height:100vh;
+        width:100%;
+        display:block;
+        text-align: center;
+        transition: all 0.5s ease;
+
+    }
+    #click:checked ~ ul{
+        left:0%
+    }
+    #click:checked ~ .menu-btn i:before{
+        content: "\f00d";
+    }
+    nav ul li {
+        margin:40px 0;
+        
+    }
+    nav ul li a{
+        font-size:20px;
+        display:block;
+    }
+    nav ul li a:hover,
+    nav ul li a.tdl_active{
+        color :cyan;
+        background:none;
+    }
+
+}
+
+
+
+
+/**************************main*******************************/
+
+
+.main_heading{
+    text-align : center;
+    margin-bottom: 10px;
+}
+.grid_container{
+    /* display: flex;
+    flex-direction: column;
+    gap : 10px;
+    word-spacing: 120px; */
+    display: grid;
+    grid-template-columns: 150px 120px 100px;
+    row-gap: 20px;
+    column-gap: 30px;
+    text-align: center;
+    justify-content: center;
+    /* align-items: center; */
+
+}
+.grid_container button {
+    background:rgb(10, 250, 10);
+}
+.grid_container input{
+    padding: 10px;
+}
+.todo_container{
+    margin-top: 10px;
+    align-items: center;
+    font-size: 15px;
+    
+}
+
+.todo_container button{
+    background: rgb(243, 39, 39);
+    padding: 10px ;
+    
+}

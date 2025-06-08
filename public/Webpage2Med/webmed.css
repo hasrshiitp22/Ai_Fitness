@@ -1,0 +1,229 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;        
+    
+    
+    
+}
+
+nav{
+    height : 80px;
+    background :#1b1b1b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+
+}
+nav .logo{
+    font-size: 33px;
+    color: #fff;
+    font-weight: 600;
+}
+nav ul{
+    display : flex;
+
+}
+nav ul li{
+    margin: 0 5px;
+}
+nav ul li a{
+    color : white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition : all 0.5s ease;
+
+}
+nav ul li a:hover{
+    color : #1b1b1b;
+    background:#fff;
+    
+}
+nav .menu-btn{
+    color:#fff;
+    font-size: 22px;
+    cursor :pointer;
+    display: none;
+}
+#click{
+    display:none;
+}
+@media(max-width:740px){
+    nav .menu-btn{
+        display: block;
+    }
+    nav ul{
+        position: fixed;            /* first*/
+        top:80px;
+        left : -100%;
+        background:#111;
+        height:100vh;
+        width:100%;
+        display:block;
+        text-align: center;
+        transition: all 0.5s ease;
+
+    }
+    #click:checked ~ ul{
+        left:0%
+    }
+    #click:checked ~ .menu-btn i:before{
+        content: "\f00d";
+    }
+    nav ul li {
+        margin:40px 0;
+        
+    }
+    nav ul li a{
+        font-size:20px;
+        display:block;
+    }
+    nav ul li a:hover,
+    nav ul li a.active{          /**/
+        color :cyan;
+        background:none;
+    }
+
+}
+
+
+/*******************************main****************************************/
+
+
+.para_center{
+    text-align: center;
+    
+}
+.rec{
+    display: flex;
+    justify-content: center;
+}
+.fst_circle{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(204, 201, 201);
+    border-radius: 50% 0 0 50%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.rectangle{
+    height: 100px;
+    width: 600px;
+    background-color: rgb(204, 201, 201);
+    margin-top: 20px;
+    padding-top: 3px;
+}
+.scnd_circle{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(204, 201, 201);
+    border-radius: 0 50% 50% 0;
+    margin-top: 20px;
+}
+
+
+.para{
+    margin-left: 15px;
+}
+
+/*********************second container**********88*/
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 5px;
+}
+.circle{
+    height: 340px;
+    width : 340px;
+    background-color: rgb(175, 174, 174);
+    border-radius: 40px 0 0 40px;
+    /* background-image: url("kapalbhati\ f2.jpg"); */
+    background-size: cover;
+    background-position: center;
+}
+.rectangle_2{
+    height: 340px;
+    width : 700px;
+    background-color: rgb(204, 201, 201);
+    border-radius: 0 40px 40px 0 ;
+    padding: 10px;
+}
+@media(max-width:504px){
+    .fst_circle{
+        height: 150px;
+        width: 150px;
+    }
+    .scnd_circle{
+        height: 150px;
+        width: 150px;
+    }
+    .rectangle{
+        height: 150px;
+    }
+
+    .rectangle_2{
+        height: 450px;
+    }
+    .circle{
+        height: 450px;
+        width: 450px;
+    }
+}
+
+@media(max-width:376px){
+    .fst_circle{
+        height: 170px;
+        width: 170px;
+    }
+    .scnd_circle{
+        height: 170px;
+        width: 170px;
+    }
+    .rectangle{
+        height: 170px;
+    }
+    
+    .rectangle_2{
+        height: 700px;
+    }
+    .circle{
+        height: 700px;
+        width: 500px;
+    }
+
+
+}
+
+
+.mrgn_top{
+    margin-top: 5px;
+}
+.para a{
+    text-decoration: underline;
+}
+
+
+.Transcendental{
+    background-image: url("photo/Transcendental\ Meditation.jpg");
+}
+.Mindfulness{
+    background-image: url("photo/Mindfulness\ Meditation.jpg");
+}
+.Loving{
+    background-image: url("photo/pexels-photo-846741.jpeg");
+}
+.Body{
+    background-image: url("photo/man\ med.webp");
+}
+.Guided{
+    background-image: url("photo/focus\ med\ img.jpg");
+}
+

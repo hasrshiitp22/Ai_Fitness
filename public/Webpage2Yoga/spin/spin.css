@@ -1,0 +1,183 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;        
+    
+    
+    
+}
+
+nav{
+    height : 80px;
+    background :#1b1b1b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+
+}
+nav .logo{
+    font-size: 33px;
+    color: #fff;
+    font-weight: 600;
+}
+nav ul{
+    display : flex;
+
+}
+nav ul li{
+    margin: 0 5px;
+}
+nav ul li a{
+    color : white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition : all 0.5s ease;
+
+}
+nav ul li a:hover{
+    color : #1b1b1b;
+    background:#fff;
+    
+}
+nav .menu-btn{
+    color:#fff;
+    font-size: 22px;
+    cursor :pointer;
+    display: none;
+}
+#click{
+    display:none;
+}
+@media(max-width:740px){
+    nav .menu-btn{
+        display: block;
+    }
+    nav ul{
+        position: fixed;            /* first*/
+        top:80px;
+        left : -100%;
+        background:#111;
+        height:100vh;
+        width:100%;
+        display:block;
+        text-align: center;
+        transition: all 0.5s ease;
+
+    }
+    #click:checked ~ ul{
+        left:0%
+    }
+    #click:checked ~ .menu-btn i:before{
+        content: "\f00d";
+    }
+    nav ul li {
+        margin:40px 0;
+        
+    }
+    nav ul li a{
+        font-size:20px;
+        display:block;
+    }
+    nav ul li a:hover,
+    nav ul li a.active{
+        color :cyan;
+        background:none;
+    }
+
+}
+
+
+/*************************main********************/
+
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.circle{
+    height: 320px;
+    width : 320px;
+    background-color: aqua;
+    border-radius: 40px 0 0 40px;
+    /* background-image: url("happy.jpg"); */
+    background-size: cover;
+    background-position: center;
+}
+/* @media(max-width:) */
+.rectangle{
+    height: 320px;
+    width : 700px;
+    background-color: rgb(204, 201, 201);
+    border-radius: 0 40px 40px 0 ;
+    padding: 10px;
+}
+
+
+@media(max-width:504px){
+    .circle{
+        height: 430px;
+        width: 430px;
+    
+    }
+    .rectangle{
+        height: 430px;
+    }
+}
+
+@media(max-width:376px){
+    .circle{
+        height: 590px;
+        width: 590px;
+    }
+    .rectangle{
+        height: 590px;
+    }
+}
+
+
+.rectangle a{
+    text-decoration: underline;
+}
+
+.steps{
+    padding-left: 15px;
+    margin-top: 3px;
+}
+
+h3{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.msg_abv{
+    text-align: center;
+}
+
+.yt_vdo{
+    margin-top: 4px;;
+}
+
+.bhujangasana{
+    background-image: url("/Webpage2Yoga/Photo/Salamba\ Bhujangasana\ m1.jpeg");
+    
+}
+.balasana{
+    background-image: url("/Webpage2Yoga/Photo/Balasana\ f2.jpg");
+}
+.Viparita_karani{
+    background-image: url("/Webpage2Yoga/Photo/Viparita_karani\ f2.jpg");
+    
+}
+/* @media(max-width:960px){
+    .Paschimottanasana{
+        background-position: center;
+    }
+} */

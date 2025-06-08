@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Signup</title>
+  <link rel="stylesheet" href="landingpage/landingpage.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+<body>
+
+  <header class="head-landing">
+    <h1>Level Up</h1>
+    <a href="/About/about.html" class="landing-about">About</a>
+  </header>
+  
+
+  <div class="container">
+      <div class="form-box">
+            <h1 class = "title">Sign Up</h1>
+            <!-- <div class="underline"></div> -->
+              <form id="auth-form" action="/signup" method="POST">
+            <form>
+                <div class="input-group">
+                    <div class="input-field namefield">       <!---namefield-->
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder = "User Name"name="username" >
+                     </div>    <!------username-------->
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder = "Email" name="email" required>
+                    </div>      <!------email-------->
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder = "Password" name="password" required>
+                    </div>          <!------password-------->
+                    <!-- <p>Password Suggestions <a href="#">Click Here!</a></p> -->
+                    
+                </div>
+                   <button type="submit" class="submit-btn">Submit</button>
+                <div class="btn-field">
+                    <button type="button" class="signupbtn mode-btn"  id="signup-btn">Sign Up</button>
+                    <button type="button" class ="signinbtn mode-btn disable"  id="login-btn">Sign In</button>
+                </div>
+            </form>
+        </div>
+  </div>
+
+<script src="../landingpage/landingpage.js"></script>
+
+</body>
+</html>

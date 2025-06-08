@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Up</title>
+    <link rel="stylesheet" href="webpage1/webpage1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+     <video class="back" autoplay muted loop playsinline>
+    <source src="/Webpage1/CrossFit-Where-Fitness-Meets-Health.mp4" type="video/mp4">
+
+  </video>
+  <div class="video-overlay"></div>
+    <nav>
+        <div class="logo">Level Up</div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">     <!-- label pr click krne se ckeck hoga phir click krne se unchecked hoga -->
+            <i class="fa-solid fa-bars"></i>
+        </label>
+        <ul>
+            <li><a id="active_home1" >Home</a></li>
+            <li><a id="active_home2" >About</a></li>
+            <li><a id="active_home3">Profile</a></li>
+            <li><a id="active_home4" >Contact</a></li>
+            <li><a id="active_home5" >ToDo list</a></li>
+            
+            
+        </ul>
+    </nav>
+    <main>
+        <div class="main-section">
+            <a href="/Webpage2Med/webmed.html"><div class="meditation sec-box">
+                <p class="sec-p">Meditation</p>
+                <div class="med-img sec-img"></div>
+            </div></a>
+
+            <a href="/Webpage2Yoga/webyoga.html"><div class="yoga sec-box">
+                <p class="sec-p">Yoga</p>
+                <div class="yoga-img sec-img"></div>
+            </div></a>
+
+            <a id="bodyweight-img"><div class="bodyweightex sec-box">
+                <p class="sec-p">Bodyweight Exercise</p>
+                <div class="bodyweight-img sec-img"></div>
+            </div></a>
+
+            <a href="#"><div class="trackingtool sec-box">
+                <p class="sec-p">AI for Tracking Fitness</p>
+                <div class="ai-img sec-img"></div>
+            </div></a>
+
+            <a href="#"><div class="shop sec-box">
+                <p class="sec-p">Shop(Coming Soon)</p>
+                <div class="shop-img sec-img"></div>
+            </div></a>
+
+            <a href="#"><div class="extra sec-box">
+                <p class="sec-p">(Coming Soon)</p>
+                <div class="ext-img sec-img"></div>
+            </div></a>
+            
+
+        </div>
+    </main>
+</body>
+<script>
+    document.getElementById("active_home1").addEventListener('click', function() {
+          window.location.href = '/dashboard';
+    })
+      document.getElementById("active_home2").addEventListener("click", function(){
+        window.location.href ='/about';
+    })
+      document.getElementById("active_home3").addEventListener('click', function() {
+          window.location.href = '/profile';
+    })
+    document.getElementById("active_home4").addEventListener("click", function(){
+        window.location.href ='/contactUs';
+    })
+    document.getElementById("active_home5").addEventListener("click", function(){
+        window.location.href = '/ToDoList';
+    })
+    document.getElementById("bodyweight-img").addEventListener("click", function(){
+        window.location.href = '/workout';
+    })
+   
+</script>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workout Info Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #1f4037, #99f2c8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <form id="userinfo-form">
+    <h2>Enter Your Info</h2>
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="number" name="age" placeholder="Age" required>
+    <input type="number" name="height" placeholder="Height (cm)" required>
+    <input type="number" name="weight" placeholder="Current Weight (kg)" required>
+    <input type="number" name="targetWeight" placeholder="Target Weight (kg)" required>
+    <select name="diet" required>
+      <option value="" disabled selected>Select Diet Preference</option>
+      <option value="veg">Vegetarian</option>
+      <option value="nonveg">Non-Vegetarian</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('userinfo-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('No token found. Please log in again.');
+        window.location.href = '/login.html'; // Optional redirect
+        return;
+      }
+
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch('/userinfo', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.redirected) {
+          window.location.href = response.url;
+        } else {
+          const text = await response.text();
+          alert(text);
+        }
+      } catch (error) {
+        alert('Something went wrong. Please try again.');
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

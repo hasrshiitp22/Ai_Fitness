@@ -1,0 +1,83 @@
+ body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #040404;
+      padding: 20px;
+    }
+    .work_title{
+    color: #fff;
+    width: 500px;
+    }
+
+    h1 {
+      margin-bottom: -20px;
+      color: aliceblue;
+    }
+
+    .body-workout {
+     display: flex;
+     flex-direction: row;
+    }
+
+    
+
+    .click-zone {
+      position: absolute;
+      background-color: rgba(255, 0, 0, 0.3);
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .workout-box {
+      margin-top: 30px;
+      background-color: #fff;
+      padding: 0px;
+      display: inline-block;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .workout-box img {
+      width: 200px;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+
+    .icon path {
+      fill: white;
+      transition: fill 0.3s;
+      position: absolute;
+    }
+
+    .icon:hover path {
+      fill: red;
+      /* On hover */
+      cursor: pointer;
+    }
+
+    .icon:active path {
+      fill: darkred;
+      /* On click */
+    }
+   
+     .gif{
+          display: flex;
+          flex-direction: column;
+       margin: 50px;
+     }
+    
+  
+      @media(max-width:740px){
+   
+    .body-workout{
+   display: flex;
+    flex-direction: column;
+}
+  .work_video{
+     width: 450px;
+    background-color: aqua;
+
+  }
+    
+  
+   }

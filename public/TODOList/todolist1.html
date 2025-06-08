@@ -1,0 +1,123 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Task Notifier</title>
+
+    <!-- FontAwesome for optional icons (like user icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- EmailJS SDK (latest version) -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("MElZe551hjpaRHN3W"); // Replace with your EmailJS public key
+        })();
+    // </script>
+</head>
+<body>
+    <h2>Task Notifier</h2>
+
+    <!-- Display fetched name -->
+    <div class="form-group">
+        <label><i class="fas fa-user"></i> Name:</label>
+        <span id="name">Loading...</span>
+    </div><br>
+
+    <label>Task:</label><br>
+    <input type="text" id="task"><br><br>
+
+    <label>Time (yyyy-mm-dd hh:mm):</label><br>
+    <input type="datetime-local" id="datetime"><br><br>
+
+    <label>Your Email:</label><br>
+    <input type="email" id="email"><br><br>
+
+    <button onclick="scheduleTask()">Set Reminder</button>
+    <div class="containtask">
+        
+    </div>
+
+    <script>
+        async function fetchUserInfo() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Please log in.');
+                window.location.href = '/';
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/userinfo', {
+                    headers: { Authorization: 'Bearer ' + token }
+                });
+
+                if (!res.ok) throw new Error('Fetch failed');
+
+                const data = await res.json();
+                document.getElementById('name').textContent = data.name;
+                console.log("User fetched:", data);
+
+            } catch (err) {
+                alert('Failed to load profile.');
+                console.error(err);
+            }
+        }
+
+        function scheduleTask() {
+            const task = document.getElementById("task").value;
+            const datetime = new Date(document.getElementById("datetime").value);
+            const email = document.getElementById("email").value;
+            const name = document.getElementById("name").textContent;
+
+            if (!task || !datetime || !email || !name || name === "Loading...") {
+                alert("Please fill in all fields and wait for user name to load.");
+                return;
+            }
+
+            const now = new Date();
+            const delay = datetime - now;
+
+            if (delay <= 0) {
+                alert("The time must be in the future.");
+                return;
+            }
+
+            Notification.requestPermission().then(permission => {
+                if (permission !== "granted") {
+                    alert("Notification permission denied.");
+                    return;
+                }
+
+                setTimeout(() => {
+                    // Browser notification
+                    new Notification("Task Reminder", {
+                        body: `${name}, your task is due: ${task}`
+                    });
+
+                    // Email notification
+                    emailjs.send("service_0u38j0f", "template_q0dbnyi", {
+                        name: name,
+                        task: task,
+                        email: email,
+                        datetime: datetime.toString()
+                    }).then(
+                        (response) => {
+                            console.log("Email sent successfully!", response.status, response.text);
+                        },
+                        (error) => {
+                            console.error("Email failed to send:", error);
+                            alert("Email failed to send. Check console for details.");
+                        }
+                    );
+                }, delay);
+
+                alert("Task reminder and email scheduled!");
+            });
+        }
+        getElementById("containtask").
+
+        // Load user info on page load
+        window.onload = fetchUserInfo;
+    </script>
+</body>
+</html> -->
