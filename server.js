@@ -2,11 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const path = require('path');
+const getIndianDietPlan = require('./public/userinfo/meal');
 const User = require('./models/User');
 const bcrypt = require('bcrypt');
+require('dotenv').config(); 
 const authRoutes = require('./routes/auth');
 
 
+
+
+const SECRET_KEY = 'your_jwt_secret_key';
 
 const app = express();
 app.use(express.static('public'))
@@ -29,8 +34,7 @@ mongoose.connect('mongodb://localhost:27017/authApp', {
 
 
 
-// Secret key for JWT
-const SECRET_KEY = 'your_jwt_secret_key';
+
 
 const users = [];
 
@@ -44,17 +48,23 @@ app.get('/', (req, res) => {
 app.get('/workout',(req,res)=>{
   res.sendFile(path.join(__dirname, 'public','workout','workout.html'))
 })
+app.get('/diet',(req,res)=>{
+  res.sendFile(path.join(__dirname, 'public','userinfo','meal.html'))
+})
 
+app.get('/api/diet', async (req, res) => {
+  const dietPlan = await getIndianDietPlan();
+  res.send(dietPlan);
+});
 // Signup route
 app.use('/', authRoutes);
-
 
 
 
 // Middleware to verify token
 function verifyToken(req, res, next) {
   const token = req.headers['authorization']?.split(' ')[1] || '';
-
+  
   if (!token) return res.status(401).send('Access Denied. No token provided.');
 
   jwt.verify(token, SECRET_KEY, (err, decoded) => {
@@ -97,9 +107,9 @@ app.post('/userinfo', async (req, res) => {
 
 //  all pages route
 app.get('/dashboard', (req, res) => {
-   res.sendFile(path.join(__dirname, 'public', 'webpage1', 'webpage1.html'));
+  res.sendFile(path.join(__dirname, 'public', 'webpage1', 'webpage1.html'));
 
-  
+
 });
 app.get('/about',(req, res)=> {
   res.sendFile(path.join(__dirname,'public','About','About.html'));
@@ -129,22 +139,11 @@ app.get('/api/userinfo', verifyToken, async (req, res) => {
     res.status(500).send('Error fetching user info');
   }
 });
-//to-do-list
-// function doPost(e) {
-//   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-//   var task = e.parameter.task;
-//   var dueDate = e.parameter.dueDate;
 
-//   sheet.appendRow([task, dueDate, ""]);
-  
-//   return ContentService.createTextOutput("Success").setMimeType(ContentService.MimeType.TEXT);
-// }
 
 
 app.listen(port, '0.0.0.0', () => {
- console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port}`);
 });
-
-
 
 

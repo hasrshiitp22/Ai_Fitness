@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <title>Workout Info Form</title>
   <style>
     body {
@@ -50,8 +54,8 @@
     <input type="text" name="name" placeholder="Name" required>
     <input type="number" name="age" placeholder="Age" required>
     <input type="number" name="height" placeholder="Height (cm)" required>
-    <input type="number" name="weight" placeholder="Current Weight (kg)" required>
-    <input type="number" name="targetWeight" placeholder="Target Weight (kg)" required>
+    <input type="number" name="weight" placeholder="Weight (kg)" required>
+    <input type="number" name="target-weight" placeholder="Target Weight (kg)" required>
     <select name="diet" required>
       <option value="" disabled selected>Select Diet Preference</option>
       <option value="veg">Vegetarian</option>
@@ -59,6 +63,9 @@
     </select>
     <button type="submit">Submit</button>
   </form>
+</body>
+</html>
+
 
   <script>
     document.getElementById('userinfo-form').addEventListener('submit', async function (e) {
@@ -67,32 +74,26 @@
       const token = localStorage.getItem('token');
       if (!token) {
         alert('No token found. Please log in again.');
-        window.location.href = '/login.html'; // Optional redirect
         return;
       }
 
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData.entries());
 
-      try {
-        const response = await fetch('/userinfo', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-          },
-          body: JSON.stringify(data)
-        });
+      const response = await fetch('/userinfo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify(data)
+      });
 
-        if (response.redirected) {
-          window.location.href = response.url;
-        } else {
-          const text = await response.text();
-          alert(text);
-        }
-      } catch (error) {
-        alert('Something went wrong. Please try again.');
-        console.error(error);
+      if (response.redirected) {
+        window.location.href = response.url;
+      } else {
+        const text = await response.text();
+        alert(text);
       }
     });
   </script>

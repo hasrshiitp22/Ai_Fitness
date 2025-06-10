@@ -1,39 +1,3 @@
-  let signupbtn = document.querySelector(".signupbtn");
-let signInbtn = document.querySelector(".signinbtn");
-let namefield = document.querySelector(".namefield");
-const forms = document.getElementById("auth-form");
-let titles = document.querySelector(".title");
-// let underline = document.querySelector(".underline");
-
-  document.body.style.backgroundColor = 'lightblue';
-
-
-
-signInbtn.addEventListener("click",()=>{
-    namefield.style.maxHeight = '0';
-    titles.innerHTML = "Sign In";
-          forms.action = "/login";
-    signupbtn.classList.add('disable');
-    signInbtn.classList.remove('disable');
-    // underline.style.transform = 'translateX(35px)';
-})
-signupbtn.addEventListener("click",()=>{
-    namefield.style.maxHeight = '60px';
-    titles.innerHTML = "Sign Up";
-      forms.action = "/signup";
-    signupbtn.classList.remove('disable');
-    signInbtn.classList.add('disable');
-    // underline.style.transform = 'translateX(0px)';
-})  
-   
-   
-   
-   
-   
-   
-   
-   
-   
    const loginBtn = document.getElementById("login-btn");
     const signupBtn = document.getElementById("signup-btn");
     const usernameGroup = document.getElementById("username-group");

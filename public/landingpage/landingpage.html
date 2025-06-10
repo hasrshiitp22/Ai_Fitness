@@ -13,7 +13,37 @@
     <h1>Level Up</h1>
     <a href="/About/about.html" class="landing-about">About</a>
   </header>
-  
+  <style>
+   
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #3897f0;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  transition: background 0.3s ease;
+}
+.toggle-buttons button {
+  background: none;
+  border: none;
+  color: #3897f0;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0 10px;
+}
+.submit-btn:hover {
+  background-color: #2d76cc;
+}
+
+
+
+  </style>
 
   <div class="container">
       <div class="form-box">
@@ -48,7 +78,37 @@
         </div>
   </div>
 
-<script src="../landingpage/landingpage.js"></script>
+  <!-- ✅ JavaScript to handle mode switching -->
+  <script>
+ let signupbtn = document.querySelector(".signupbtn");
+let signInbtn = document.querySelector(".signinbtn");
+let namefield = document.querySelector(".namefield");
+    const form = document.getElementById("auth-form");
+let title = document.querySelector(".title");
+// let underline = document.querySelector(".underline");
+
+  document.body.style.backgroundColor = 'lightblue';
+
+
+
+signInbtn.addEventListener("click",()=>{
+    namefield.style.maxHeight = '0';
+    title.innerHTML = "Sign In";
+      form.action = "/login";
+    signupbtn.classList.add('disable');
+    signInbtn.classList.remove('disable');
+    // underline.style.transform = 'translateX(35px)';
+})
+signupbtn.addEventListener("click",()=>{
+    namefield.style.maxHeight = '60px';
+    title.innerHTML = "Sign Up";
+      form.action = "/signup";
+    signupbtn.classList.remove('disable');
+    signInbtn.classList.add('disable');
+    // underline.style.transform = 'translateX(0px)';
+})
+
+  </script>
 
 </body>
 </html>

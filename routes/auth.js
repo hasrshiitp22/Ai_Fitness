@@ -1,49 +1,73 @@
-// routes/authRoutes.js
 const express = require('express');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const router = express.Router();
-const User = require('../models/User');
+const User = require('../models/User'); 
+const jwt = require('jsonwebtoken');
 
 const SECRET_KEY = 'your_jwt_secret_key';
 
-// Signup Route
+
+
 router.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(409).json({ message: 'User already exists' });
+      return res.send('User already exists. <a href="/">Login</a>');
     }
+
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new User({ username, email, password: hashedPassword });
-    await newUser.save();
 
-    res.status(201).json({ message: 'Signup successful' });
+    const newUser = new User({
+      username,
+      email,
+      password: hashedPassword
+    });
+
+    await newUser.save();
+  
+    // Redirect 
+    res.redirect('/userinfo'); 
+    
   } catch (err) {
     console.error('Signup error:', err);
-    res.status(500).json({ message: 'Signup failed' });
+    res.status(500).send('Signup failed. Try again.');
   }
 });
 
-// Login Route
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
     const user = await User.findOne({ email });
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+    if (!user) {
+      return res.send('Invalid credentials e. <a href="/">Try again</a>');
     }
 
-    const token = jwt.sign({ userId: user._id }, SECRET_KEY, { expiresIn: '1h' });
-    res.json({ token });
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.send('Invalid credentials p. <a href="/">Try again</a>');
+    }
+
+   const token = jwt.sign(
+  { id: user._id, email: user.email, username: user.username },
+  SECRET_KEY,
+  { expiresIn: '1h' }
+);
+
+
+    res.send(`
+      <script>
+        localStorage.setItem('token', '${token}');
+        window.location.href = '/dashboard';
+      </script>
+    `);
   } catch (err) {
-    console.error('Login error:', err);
-    res.status(500).json({ message: 'Login failed' });
+    console.error(err);
+    res.status(500).send('Login failed. Try again.');
   }
 });
 

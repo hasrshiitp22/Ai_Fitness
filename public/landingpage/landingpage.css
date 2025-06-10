@@ -60,16 +60,14 @@
 }
 
 .form-box{
-    width:50%;
+    width:90%;
     max-width : 450px;
     min-width : 350px;
     background-color: white;
     padding : 55px;
-    padding-bottom: 20px;
     text-align : center;
     border-radius: 10px;
     box-shadow:  -2px 2px 15px rgba(0,0,0,0.5);
-
 
 }
 
@@ -126,7 +124,7 @@ form p a{
     outline:0;
     cursor: pointer;
     transition: background 1s;
-  
+    /* margin-top: 10px; */
 }
 .input-field{
     height : 280;
