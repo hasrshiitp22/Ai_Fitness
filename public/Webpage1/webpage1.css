@@ -106,7 +106,7 @@ main{
   
     /* background-image: url("green\ ghass\ \(1\).jpg");   
                 */
-    /* background-image: url("backgroundimg2.jpg");    */ */
+    /* background-image: url("backgroundimg2.jpg");    */
 
     background-size: cover;
     background-position: center;
@@ -186,8 +186,10 @@ main{
     background-image: url("WebPhoto/ai.jpg");
 }
 .shop-img{
+    background-color: #fff;
     background-image: url("WebPhoto/shop.jpg");
 }
 .ext-img{
-    background-image: url("WebPhoto/bodyweight1.jpg");
+      cursor:pointer;
+    background-image: url("WebPhoto/fresh-vegetable-salad-with-grilled-chicken-breast.jpg");
 }

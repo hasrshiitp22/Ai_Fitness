@@ -26,12 +26,22 @@ router.post('/signup', async (req, res) => {
       email,
       password: hashedPassword
     });
+        await newUser.save();
 
-    await newUser.save();
+ const token = jwt.sign(
+  { email: newUser.email },
+  SECRET_KEY,
+  { expiresIn: '1h' }
+);
+
   
     // Redirect 
-    res.redirect('/userinfo'); 
-    
+    res.send(`
+      <script>
+        localStorage.setItem('token', '${token}');
+        window.location.href = '/userinfo';
+      </script>
+    `);
   } catch (err) {
     console.error('Signup error:', err);
     res.status(500).send('Signup failed. Try again.');
@@ -57,7 +67,6 @@ router.post('/login', async (req, res) => {
   SECRET_KEY,
   { expiresIn: '1h' }
 );
-
 
     res.send(`
       <script>

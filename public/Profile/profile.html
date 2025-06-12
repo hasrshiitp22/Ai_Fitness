@@ -138,23 +138,7 @@
         </ul>
     </nav>
    
-    <script>
-          document.getElementById("active_home1").addEventListener('click', function() {
-          window.location.href = '/dashboard';
-    })
-      document.getElementById("active_home2").addEventListener("click", function(){
-        window.location.href ='/about';
-    })
-      document.getElementById("active_home3").addEventListener('click', function() {
-          window.location.href = '/profile';
-    })
-    document.getElementById("active_home4").addEventListener("click", function(){
-        window.location.href ='/contactUs';
-    })
-    document.getElementById("active_home5").addEventListener("click", function(){
-        window.location.href = '/ToDoList';
-    })
-    </script>
+   
   <div class="containerinfo">
 
     <div class="profile-container">
@@ -204,8 +188,8 @@
         document.getElementById('age').textContent = data.age;
         document.getElementById('weight').textContent = data.weight;
         document.getElementById('height').textContent = data.height;
-        // document.get.getElementById('height').textContent=data.height;
-        console.log(data); // Add this before setting DOM content
+       
+        console.log(data);
 
       } catch (err) {
         alert('Failed to load profile.');
@@ -223,6 +207,7 @@
     //buttons 
   
   </script>
+  <script src="../allpageRoutes.js"></script>
 </body>
 
 </html>

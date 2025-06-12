@@ -2,10 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
   <title>Workout Info Form</title>
   <style>
     body {
@@ -55,19 +51,38 @@
     <input type="number" name="age" placeholder="Age" required>
     <input type="number" name="height" placeholder="Height (cm)" required>
     <input type="number" name="weight" placeholder="Weight (kg)" required>
-    <input type="number" name="target-weight" placeholder="Target Weight (kg)" required>
+    <select id="calorieRange">
+      <option value="1500-2000">1500 - 2000 kcal</option>
+      <option value="2000-2500">2000 - 2500 kcal</option>
+      <option value="2500-3000">2500 - 3000 kcal</option>
+      <option value="3000-3500">3000+ kcal</option>
+    </select>
     <select name="diet" required>
       <option value="" disabled selected>Select Diet Preference</option>
-      <option value="veg">Vegetarian</option>
-      <option value="nonveg">Non-Vegetarian</option>
+      <option value="veg">Male</option>
+      <option value="non">Female</option>
     </select>
-    <button type="submit">Submit</button>
+    <button type="submit" onclick="downloadPlan()">Submit</button>
   </form>
 </body>
 </html>
 
 
   <script>
+      function downloadPlan() {
+      const range = document.getElementById("calorieRange").value;
+      if (range === "1500-2000") {
+        window.location.href = "/1500_2000_calorie_meal_plan";
+      } else if (range === "2000-2500") {
+        window.location.href = "/2000_2500_calorie_meal_plan";
+      }
+      else if (range === "2500-3000") {
+        window.location.href = "/2500_3000_calorie_meal_plan";
+      }
+      else if (range === "3000-3500") {
+        window.location.href = "/3000_plus_calorie_meal_plan";
+      }
+    }
     document.getElementById('userinfo-form').addEventListener('submit', async function (e) {
       e.preventDefault();
 

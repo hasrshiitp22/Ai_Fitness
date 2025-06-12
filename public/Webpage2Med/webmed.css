@@ -137,7 +137,7 @@ nav .menu-btn{
 .container{
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     gap: 5px;
 }
 .circle{
@@ -145,7 +145,7 @@ nav .menu-btn{
     width : 340px;
     background-color: rgb(175, 174, 174);
     border-radius: 40px 0 0 40px;
-    /* background-image: url("kapalbhati\ f2.jpg"); */
+    
     background-size: cover;
     background-position: center;
 }
@@ -156,51 +156,8 @@ nav .menu-btn{
     border-radius: 0 40px 40px 0 ;
     padding: 10px;
 }
-@media(max-width:504px){
-    .fst_circle{
-        height: 150px;
-        width: 150px;
-    }
-    .scnd_circle{
-        height: 150px;
-        width: 150px;
-    }
-    .rectangle{
-        height: 150px;
-    }
-
-    .rectangle_2{
-        height: 450px;
-    }
-    .circle{
-        height: 450px;
-        width: 450px;
-    }
-}
-
-@media(max-width:376px){
-    .fst_circle{
-        height: 170px;
-        width: 170px;
-    }
-    .scnd_circle{
-        height: 170px;
-        width: 170px;
-    }
-    .rectangle{
-        height: 170px;
-    }
-    
-    .rectangle_2{
-        height: 700px;
-    }
-    .circle{
-        height: 700px;
-        width: 500px;
-    }
 
 
-}
 
 
 .mrgn_top{
@@ -227,3 +184,46 @@ nav .menu-btn{
     background-image: url("photo/focus\ med\ img.jpg");
 }
 
+
+@media(max-width:550px){
+    .fst_circle{
+        /* height: 150px;
+        width: 150px; */
+        display: none;
+    }
+    .scnd_circle{
+        /* height: 150px;
+        width: 150px; */
+        display: none;
+    }
+    .rectangle{
+        height: auto;
+        width: 90vw;
+        padding: 10px;
+        border-radius: 20px 20px 20px 20px;
+    }
+
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: none;
+    }
+    .rectangle_2{
+        height: auto;
+        width: 100vw;
+        border-radius: 0 0 0 0 ;
+    }
+    .circle{
+        height: 300px;
+        width: 80vw;
+        border-radius: 40px 40px 40px 40px ;
+        margin: none;
+    }
+}
+@media(min-width:550px){
+    .line{
+        display: none;
+    }
+}

@@ -129,26 +129,7 @@ main h1{
 
 
 
-@media(max-width:504px){
-    .circle{
-        height: 300px;
-        width: 300px;
-    
-    }
-    .rectangle{
-        height: 300px;
-    }
-}
 
-@media(max-width:376px){
-    .circle{
-        height: 400px;
-        width: 400px;
-    }
-    .rectangle{
-        height: 400px;
-    }
-}
 
 
 
@@ -187,3 +168,33 @@ a{
 .para_marg{
     margin-bottom: 5px;
 }
+
+@media(max-width:550px){                                         /* { */
+    
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+    .circle{
+    height: 250px;                                                              
+    width : 80vw;
+    background-color: aqua;
+    border-radius: 40px 40px 40px 40px;
+    background-size: cover;
+    background-position: center;
+    }
+
+    .rectangle{                                                          /* new addon */  
+        height: auto;
+        width : 100vw;
+        background-color: rgb(204, 201, 201);
+        border-radius: 0 0 0 0 ;
+        padding: 10px;
+    }
+}
+
+@media(min-width:551px){
+    .line{
+        display: none;
+    }
+}  
