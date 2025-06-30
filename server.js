@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const path = require('path');
-const getIndianDietPlan = require('./public/userinfo/meal');
+
 const User = require('./models/User');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
@@ -15,22 +15,21 @@ const SECRET_KEY = 'your_jwt_secret_key';
 const app = express();
 const port = 8080 || 3000;
 
-// Middleware
+// Middleware 
 connectDB();
 app.use(express.static('public'));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Auth Routes
+
 app.use('/', authRoutes);
 
 
-// Landing Page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'landingpage', 'landingpage.html'));
 });
 
-// Workout & Diet HTML
+
 app.get('/workout', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'workout', 'workout.html'));
 });
@@ -39,22 +38,48 @@ app.get('/diet', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'userinfo', 'meal.html'));
 });
 
-// Diet API
-app.get('/api/diet', async (req, res) => {
-  const dietPlan = await getIndianDietPlan();
-  res.send(dietPlan);
-});
 
-// Serve user info form
+
+
 app.get('/userinfo', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'userinfo', 'userinfo.html'));
 });
 
-// Save user profile data
+// Page routes
+app.get('/dashboard',(req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'webpage1', 'webpage1.html'));
+});
+
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'About', 'About.html'));
+});
+
+app.get('/contactUs', (req, res,next) => {
+  res.sendFile(path.join(__dirname, 'public', 'ContactUs', 'contactus.html'));
+});
+app.post('/contactUs', (req, res,next) => {
+
+    console.log(req.body)
+  const data = `name:${req.body.names}  email:${req.body.email} mesg:=> ${req.body.msg} \n`
+
+  fs.appendFileSync(path.join('contactData.txt'),data);
+
+  res.send(`<p>Thank you for contacting us! We’ve received your message and will get back to you shortly.</p>
+`);
+});
+app.get('/profile',(req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'Profile', 'profile.html'));
+});
+
+app.get('/ToDoList', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'TODOList', 'todolist.html'));
+});
+
+
 app.post('/userinfo', async (req, res) => {
   const token = req.headers['authorization']?.split(' ')[1];
   if (!token) return res.status(401).send('No token');
-
+  
   try {
     const decoded = jwt.verify(token, SECRET_KEY);
     const email = decoded.email;
@@ -82,39 +107,11 @@ app.get('/api/userinfo', verifyToken, async (req, res) => {
     res.json(user);
   } catch (err) {
     console.error(err);
-    res.status(500).send('Error fetching user info');
+    res.send('Error fetching user info');
   }
 });
 
-// Page routes
-app.get('/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'webpage1', 'webpage1.html'));
-});
 
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'About', 'About.html'));
-});
-
-app.get('/contactUs', (req, res,next) => {
-  res.sendFile(path.join(__dirname, 'public', 'ContactUs', 'contactus.html'));
-});
-app.post('/contactUs', (req, res,next) => {
-
-    console.log(req.body)
-  const data = `name:${req.body.names}  email:${req.body.email} mesg:=> ${req.body.msg} \n`
-
-  fs.appendFileSync(path.join('contactData.txt'),data);
-
-  res.send(`<p>Thank you for contacting us! We’ve received your message and will get back to you shortly.</p>
-`);
-});
-app.get('/profile', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'Profile', 'profile.html'));
-});
-
-app.get('/ToDoList', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'TODOList', 'todolist.html'));
-});
 
 // Diet PDF download routes
 app.get('/1500_2000_calorie_meal_plan', (req, res) => {
@@ -130,7 +127,7 @@ app.get('/3000_plus_calorie_meal_plan', (req, res) => {
   res.download(path.join(__dirname, 'public', 'userinfo', '3000_plus_calorie_meal_plan.pdf'), 'LEVEL_UP_DIET(3000kcal).pdf');
 });
 
-// Start server
+
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${port}`);
 });

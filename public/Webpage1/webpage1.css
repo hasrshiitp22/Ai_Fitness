@@ -51,6 +51,7 @@ nav .menu-btn{
     font-size: 22px;
     cursor :pointer;
     display: none;
+    font-weight: 700;
 }
 #click{
     display:none;
@@ -103,14 +104,21 @@ header{
 }
 main{
     height: 150vh;
-  
-  
-
+     
     background-size: cover;
     background-position: center;
 }
-body{
-    background-color: black;
+.main-body{
+   width: auto;
+   background-image: url('pexels-victorfreitas-2261477.jpg');
+     background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
   back {
       position: fixed;
@@ -174,10 +182,10 @@ body{
     background-position: center;
 }
 .med-img{
-    background-image: url("WebPhoto/pngtree-woman-practicing-yoga-in-nature-by-the-river-image_16146415.jpg");
+    background-image: url("WebPhoto/meditation.jpg");
 }
 .yoga-img{
-    background-image: url("WebPhoto/cd14e13d6_b.jpg");
+    background-image: url("WebPhoto/pngtree-woman-practicing-yoga-in-nature-by-the-river-image_16146415.jpg");
 }
 .bodyweight-img{
     cursor:pointer;
@@ -194,3 +202,10 @@ body{
       cursor:pointer;
     background-image: url("WebPhoto/fresh-vegetable-salad-with-grilled-chicken-breast.jpg");
 }
+
+
+
+
+
+
+

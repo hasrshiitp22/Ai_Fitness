@@ -3,10 +3,11 @@
 <head>
     <title>Task Notifier</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
     <!-- EmailJS SDK (latest version) -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <script type="text/javascript">
         (function () {
             emailjs.init("MElZe551hjpaRHN3W"); // Replace with your EmailJS public key
@@ -35,6 +36,10 @@
     <div class="containtask">
         
     </div>
+    <div class="form-group">
+          <label><i class="fas fa-weight"></i> Weight (kg):</label>
+          <span id="weight">Loading...</span>
+        </div>
 
     <script>
         async function fetchUserInfo() {

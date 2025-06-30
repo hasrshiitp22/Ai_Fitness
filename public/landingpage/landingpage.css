@@ -135,7 +135,7 @@ button.disable{
 }
 
 
- /* by harsh */
+
 .submit-btn {
   width: 100%;
   padding: 10px;
@@ -150,7 +150,7 @@ button.disable{
   border-radius: 16px;
   transition: background 0.3s ease;
 }
-.toggle-buttons button {
+.button {
   background: none;
   border: none;
   color: #3897f0;

@@ -5,163 +5,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Fitness Profile</title>
-  <link rel="stylesheet" href="profile.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
 </head>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-
-
-
-  }
-
-  nav {
-    height: 80px;
-    background: #1b1b1b;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 50px;
-
-  }
-
-  nav .logo {
-    font-size: 33px;
-    color: #fff;
-    font-weight: 600;
-  }
-
-  nav ul {
-    display: flex;
-
-  }
-
-  nav ul li {
-    margin: 0 5px;
-  }
-
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 8px 10px;
-    border-radius: 5px;
-    transition: all 0.5s ease;
-
-  }
-
-  nav ul li a:hover,
-  nav ul li a.cnt_active {
-    color: #1b1b1b;
-    background: #fff;
-
-  }
-
-  nav .menu-btn {
-    color: #fff;
-    font-size: 22px;
-    cursor: pointer;
-    display: none;
-  }
-
-  #click {
-    display: none;
-  }
-
-  @media(max-width:740px) {
-    nav .menu-btn {
-      display: block;
-    }
-
-    nav ul {
-      position: fixed;
-      /* first*/
-      top: 80px;
-      left: -100%;
-      background: #111;
-      height: 100vh;
-      width: 100%;
-      display: block;
-      text-align: center;
-      transition: all 0.5s ease;
-
-    }
-
-    #click:checked~ul {
-      left: 0%
-    }
-
-    #click:checked~.menu-btn i:before {
-      content: "\f00d";
-    }
-
-    nav ul li {
-      margin: 40px 0;
-
-    }
-
-    nav ul li a {
-      font-size: 20px;
-      display: block;
-    }
-
-    nav ul li a:hover,
-    nav ul li a.prfl_active {
-      color: cyan;
-      background: none;
-    }
-
-  }
-</style>
 
 <body>
-   <nav>
-        <div class="logo">Level Up</div>
-        <input type="checkbox" id="click">
-        <label for="click" class="menu-btn">     
-            <i class="fa-solid fa-bars"></i>
-        </label>
-        <ul>
-                <li><a  href="/dashboard">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a class="prfl_active" href="/profile">Profile</a></li>
-            <li><a href="/contactUs">Contact</a></li>
-            <li><a  href="/ToDoList">ToDo list</a></li>
-            
-   
-        </ul>
-    </nav>
-   
-   
-  <div class="containerinfo">
 
-    <div class="profile-container">
-      <h1><i class="fas fa-dumbbell"></i> Fitness Profile</h1>
+  <nav>
+    <div class="logo">Level Up</div>
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn">
+      <i class="fa-solid fa-bars"></i>
+    </label>
+    <ul>
+      <li><a href="/dashboard">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a class="prfl_active" href="/profile">Profile</a></li>
+      <li><a href="/contactUs">Contact</a></li>
+      <li><a href="/ToDoList">ToDo List</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="profile">
       <div class="profile-form">
+        <h1><i class="fas fa-dumbbell"></i> Fitness Profile</h1>
         <div class="form-group">
           <label><i class="fas fa-user"></i> Name:</label>
-          <span id="name"></span>
+          <span id="name">Loading...</span>
         </div>
         <div class="form-group">
           <label><i class="fas fa-birthday-cake"></i> Age:</label>
-          <span id="age"></span>
+          <span id="age">Loading...</span>
         </div>
         <div class="form-group">
           <label><i class="fas fa-weight"></i> Weight (kg):</label>
-          <span id="weight"></span>
+          <span id="weight">Loading...</span>
         </div>
         <div class="form-group">
           <label><i class="fas fa-arrows-alt-v"></i> Height (cm):</label>
-          <span id="height"></span>
+          <span id="height">Loading...</span>
         </div>
-        
-
         <button onclick="logout()">Logout</button>
       </div>
     </div>
@@ -171,7 +56,7 @@
     async function fetchUserInfo() {
       const token = localStorage.getItem('token');
       if (!token) {
-        alert('Please log in.');
+        alert('Please log in first.');
         window.location.href = '/';
         return;
       }
@@ -181,19 +66,17 @@
           headers: { Authorization: 'Bearer ' + token }
         });
 
-        if (!res.ok) throw new Error('Fetch failed');
+        if (!res.ok) throw new Error('Unauthorized');
 
         const data = await res.json();
         document.getElementById('name').textContent = data.name;
         document.getElementById('age').textContent = data.age;
         document.getElementById('weight').textContent = data.weight;
         document.getElementById('height').textContent = data.height;
-       
-        console.log(data);
-
       } catch (err) {
-        alert('Failed to load profile.');
-        console.error(err);
+        alert('Failed to load profile. Please login again.');
+        localStorage.removeItem('token');
+        window.location.href = '/';
       }
     }
 
@@ -203,11 +86,7 @@
     }
 
     fetchUserInfo();
-
-    //buttons 
-  
   </script>
 
 </body>
-
 </html>

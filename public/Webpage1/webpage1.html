@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body class="main-body">
-     <!-- <video class="back" autoplay muted loop playsinline>
-    <source src="/Webpage1/CrossFit-Where-Fitness-Meets-Health.mp4" type="video/mp4">
+ 
 
-  </video> -->
-  <div class="video-overlay"></div>
+
+
     <nav>
         <div class="logo">Level Up</div>
         <input type="checkbox" id="click">
@@ -28,7 +27,7 @@
             
         </ul>
     </nav>
-    <main>
+       <main class="bg-image">
         <div class="main-section">
             <a href="/Webpage2Med/webmed.html"><div class="meditation sec-box">
                 <p class="sec-p">Meditation</p>
@@ -54,6 +53,7 @@
                 <p class="sec-p">Shop(Coming Soon)</p>
                 <div class="shop-img sec-img"></div>
             </div></a>
+            
 
             <a id="meal"><div class="extra sec-box">
                 <p class="sec-p">(Diet)</p>
@@ -63,6 +63,7 @@
 
         </div>
     </main>
+
 </body>
 <script>
 
@@ -72,5 +73,25 @@
      document.getElementById("meal").addEventListener("click", function(){
         window.location.href = '/diet';
     })
+    
+    <script>
+(async () => {
+  const token = localStorage.getItem('token');
+  if (!token) return location.href = '/';
+
+  try {
+    const res = await fetch('/api/userinfo', {
+      headers: { Authorization: 'Bearer ' + token }
+    });
+    if (!res.ok) throw new Error('Invalid token');
+    const user = await res.json();
+    document.getElementById('username').textContent = user.name;
+  } catch (err) {
+    console.error(err);
+    location.href = '/';
+  }
+})();
+</script>
+
 </script>
 </html>
