@@ -5,7 +5,6 @@ fetch(apiUrl)
   .then(response => response.json())
   .then(data => {
 
-    // You can now display this in your frontend
   })
   .catch(error => {
     console.error('Error fetching diet plan:', error);

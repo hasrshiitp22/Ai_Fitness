@@ -42,6 +42,18 @@
     button:hover {
       background-color: #218838;
     }
+    .gender{
+      display: flex;
+      gap: 35px;
+       justify-items: center;
+    }
+    .gender label{
+      display: flex;
+      gap: 10px;
+        padding: 10px 12px;
+        font-size: larger;
+     
+    }
   </style>
 </head>
 <body>
@@ -57,11 +69,20 @@
       <option value="2500-3000">2500 - 3000 kcal</option>
       <option value="3000-3500">3000+ kcal</option>
     </select>
-    <select name="diet" required>
-      <option value="" disabled selected>Select Diet Preference</option>
-      <option value="veg">Male</option>
-      <option value="non">Female</option>
-    </select>
+<div class="gender">
+  <label for="male">
+    <input type="radio" id="male" name="gender" value="male" />
+    Male
+  </label>
+
+  <label for="female">
+    <input type="radio" id="female" name="gender" value="female" />
+    Female
+  </label>
+</div>
+
+
+
     <button type="submit" onclick="downloadPlan()">Submit</button>
   </form>
 </body>

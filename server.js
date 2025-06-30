@@ -9,7 +9,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/auth');
 const verifyToken = require('./middleware/verifyToken');
 const connectDB = require('./config/db');
-
+const fs = require("fs");
 const SECRET_KEY = 'your_jwt_secret_key';
 
 const app = express();
@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Auth Routes
 app.use('/', authRoutes);
+
 
 // Landing Page
 app.get('/', (req, res) => {
@@ -94,10 +95,19 @@ app.get('/about', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'About', 'About.html'));
 });
 
-app.get('/contactUs', (req, res) => {
+app.get('/contactUs', (req, res,next) => {
   res.sendFile(path.join(__dirname, 'public', 'ContactUs', 'contactus.html'));
 });
+app.post('/contactUs', (req, res,next) => {
 
+    console.log(req.body)
+  const data = `name:${req.body.names}  email:${req.body.email} mesg:=> ${req.body.msg} \n`
+
+  fs.appendFileSync(path.join('contactData.txt'),data);
+
+  res.send(`<p>Thank you for contacting us! We’ve received your message and will get back to you shortly.</p>
+`);
+});
 app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'Profile', 'profile.html'));
 });

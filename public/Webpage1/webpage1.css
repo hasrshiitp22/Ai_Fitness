@@ -104,14 +104,15 @@ header{
 main{
     height: 150vh;
   
-    /* background-image: url("green\ ghass\ \(1\).jpg");   
-                */
-    /* background-image: url("backgroundimg2.jpg");    */
+  
 
     background-size: cover;
     background-position: center;
 }
-  .back {
+body{
+    background-color: black;
+}
+  back {
       position: fixed;
       top: 0;
       left: 0;
@@ -173,10 +174,10 @@ main{
     background-position: center;
 }
 .med-img{
-    background-image: url("WebPhoto/meditation.jpg");
+    background-image: url("WebPhoto/pngtree-woman-practicing-yoga-in-nature-by-the-river-image_16146415.jpg");
 }
 .yoga-img{
-    background-image: url("WebPhoto/meditation1.jpg");
+    background-image: url("WebPhoto/cd14e13d6_b.jpg");
 }
 .bodyweight-img{
     cursor:pointer;

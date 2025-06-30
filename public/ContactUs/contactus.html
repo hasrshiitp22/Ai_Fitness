@@ -15,12 +15,11 @@
             <i class="fa-solid fa-bars"></i>
         </label>      
              <ul>
-           <li><a id="active_home1" >Home</a></li>
-            <li><a id="active_home2">About</a></li>
-            <li><a id="active_home3">Profile</a></li>
-            <li><a id="active_home4" >Contact</a></li>
-            <li><a id="active_home5" >ToDo list</a></li>
-            
+           <li><a class="active" href="/dashboard">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a class="cnt_active" href="/contactUs">Contact</a></li>
+            <li><a href="/ToDoList">ToDo list</a></li>
    
         </ul>
     </nav>
@@ -33,15 +32,16 @@
             <div class="contact_wrapper">
                 <div class="contact_form">
                     <h3>Send us a Message</h3>
-                    <form>
+                    <form action="/contactUs" method="POST">
                         <div class="form_group">
-                            <input type="text" placeholder="Your Name">
+                            <input type="text" placeholder="Your Name" name="names" required>
                         </div>
                         <div class="form_group">
-                            <input type="text" placeholder="Your Email">
+                            <input type="text" placeholder="Your Email" 
+                            name="email" required>
                         </div>
                         <div class="form_group">
-                            <textarea placeholder="Your Message"></textarea>
+                            <textarea placeholder="Your Message" name="msg"required></textarea>
                         </div>
                         <button type="submit">Send Message</button>
                     </form>
@@ -51,7 +51,7 @@
                 <div class="contact_info">
                     <h3>Contact Information</h3>
                     <p><i class="fa-solid fa-phone"></i>+1 123 456 789</p>
-                    <p><i class="fa-solid fa-envelope"></i>iitpatnagrp50@gmail.com</p>
+                    <p><i class="fa-solid fa-envelope"></i>levelupfit123@gmail.com</p>
                     <p><i class="fa-solid fa-location-dot"></i>555 street, Bihta, India</p>
                 </div>
             </div>
@@ -59,8 +59,7 @@
     </section>
 </body>
 </html>
-  <script src="../../routes/allpageRoutes.js"></script>
-<script src="../allpageRoutes.js"></script>
+
   </script>
 </body>
 </html>

@@ -84,8 +84,7 @@ nav .menu-btn{
         font-size:20px;
         display:block;
     }
-    nav ul li a:hover,
-    nav ul li a.active{
+    nav ul li a:hover{
         color :cyan;
         background:none;
     }
@@ -120,26 +119,7 @@ nav .menu-btn{
     padding: 10px;
 }
 
-@media(max-width:504px){
-    .circle{
-        height: 430px;
-        width: 430px;
-    
-    }
-    .rectangle{
-        height: 430px;
-    }
-}
 
-@media(max-width:376px){
-    .circle{
-        height: 590px;
-        width: 590px;
-    }
-    .rectangle{
-        height: 590px;
-    }
-}
 
 
 .rectangle a{
@@ -179,3 +159,34 @@ h3{
         background-position: center;
     }
 } */
+
+
+@media(max-width:550px){                                         /* { */
+    
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+    .circle{
+    height: 320px;                                                              
+    width : 80vw;
+    background-color: aqua;
+    border-radius: 40px 40px 40px 40px;
+    background-size: cover;
+    background-position: center;
+    }
+
+    .rectangle{                                                          /* new addon */  
+        height: auto;
+        width : 100vw;
+        background-color: rgb(204, 201, 201);
+        border-radius: 0 0 0 0 ;
+        padding: 10px;
+    }
+}
+
+@media(min-width:551px){
+    .line{
+        display: none;
+    }
+}
