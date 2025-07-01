@@ -100,9 +100,10 @@ nav .menu-btn{
 
 
 main{
-    height:100vh;
+    
     width: 100%;
     background-image: url("about-background.jpg");
+
 }
 .about-container{
     
@@ -110,17 +111,18 @@ main{
     background-position: center;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     
 
 }
 .about-box{
     /* height: 80vh; */
-    width: 80%;
+    width: 90%;
     background-color: white;
     border-radius: 20px;
-    padding: 4px 8px;
-    margin-top: 100px;
+    padding: 10px 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 
 }
 .about-box h1{
@@ -131,41 +133,6 @@ main{
     font-size: 18px;
 
 }
-/* css by harsh */
-@media(max-width:740px){
-    nav .menu-btn{
-        display: block;
-    }
-    nav ul{
-        position: fixed;            /* first*/
-        top:80px;
-        left : -100%;
-        background:#111;
-        height:100vh;
-        width:100%;
-        display:block;
-        text-align: center;
-        transition: all 0.5s ease;
-
-    }
-    #click:checked ~ ul{
-        left:0%
-    }
-    #click:checked ~ .menu-btn i:before{
-        content: "\f00d";
-    }
-    nav ul li {
-        margin:40px 0;
-        
-    }
-    nav ul li a{
-        font-size:20px;
-        display:block;
-    }
-    nav ul li a:hover,
-    nav ul li a.pfl_active{
-        color :cyan;
-        background:none;
-    }
-
+a{
+    cursor: pointer;
 }

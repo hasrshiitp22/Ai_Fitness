@@ -5,6 +5,13 @@ let todo_date = document.querySelector(".todo_date");
 let todolist = [
    
 ];
+//add by harsh to secure page
+
+  const token = localStorage.getItem('token');
+  if (!token) {
+    alert("Please login first!");
+    window.location.href = "/";
+  }
 
 displaytodoitems();
 Add_todo.addEventListener('click',()=>{

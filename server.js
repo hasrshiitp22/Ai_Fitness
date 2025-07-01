@@ -50,6 +50,7 @@ app.get('/dashboard',(req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'webpage1', 'webpage1.html'));
 });
 
+
 app.get('/about', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'About', 'About.html'));
 });
@@ -64,9 +65,12 @@ app.post('/contactUs', (req, res,next) => {
 
   fs.appendFileSync(path.join('contactData.txt'),data);
 
-  res.send(`<p>Thank you for contacting us! We’ve received your message and will get back to you shortly.</p>
+  res.send(`<p> Thank you for contacting us! We’ve received your message and will get back to you shortly.</p>
+    <a href ='/dashboard'>Home</a>
 `);
 });
+
+
 app.get('/profile',(req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'Profile', 'profile.html'));
 });
