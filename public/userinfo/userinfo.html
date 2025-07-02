@@ -77,7 +77,7 @@
   </label>
 
   <label for="female">
-    <input type="radio" id="female" name="gender" value="female" />
+    <input type="radio" id="female" name="gender" value="female" required />
     Female
   </label>
 </div>
@@ -112,11 +112,11 @@
       if (!token) {
         alert('No token found. Please log in again.');
         return;
-      }
+      } 
 
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData.entries());
-
+      const k= new FormData(e.target);
+      const data = Object.fromEntries(k.entries());
+ 
       const response = await fetch('/userinfo', {
         method: 'POST',
         headers: {
@@ -126,12 +126,8 @@
         body: JSON.stringify(data)
       });
 
-      if (response.redirected) {
-        window.location.href = response.url;
-      } else {
-        const text = await response.text();
-        alert(text);
-      }
+        window.location.href = "/dashboard";
+     
     });
 
 

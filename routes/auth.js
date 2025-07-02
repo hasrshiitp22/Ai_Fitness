@@ -12,7 +12,7 @@ router.post('/signup', async (req, res) => {
 
   try {
     const userExists = await User.findOne({ email });
-    if (userExists) return res.send('User already exists. <a href="/">Login</a>');
+    if (userExists) return res.send('User already register. <a href="/">Login</a>');
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -28,12 +28,9 @@ router.post('/signup', async (req, res) => {
       </script>
     `);
   } catch (err) {
-    console.error('Signup error:', err);
     res.send('Signup failed. Try again.');
   }
 });
-
-// --- Login ---
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -57,7 +54,7 @@ router.post('/login', async (req, res) => {
       </script>
     `);
   } catch (err) {
-    console.error('Login error:', err);
+   
     res.send('Login failed. Try again.');
   }
 });

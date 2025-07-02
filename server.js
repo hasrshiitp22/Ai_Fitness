@@ -15,12 +15,10 @@ const SECRET_KEY = 'your_jwt_secret_key';
 const app = express();
 const port = 8080 || 3000;
 
-// Middleware 
 connectDB();
 app.use(express.static('public'));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.use('/', authRoutes);
 
@@ -82,22 +80,19 @@ app.get('/ToDoList', (req, res) => {
 
 app.post('/userinfo', async (req, res) => {
   const token = req.headers['authorization']?.split(' ')[1];
-  if (!token) return res.status(401).send('No token');
+  if (!token) return res.send('No token');
+  
   
   try {
-    const decoded = jwt.verify(token, SECRET_KEY);
-    const email = decoded.email;
+    const veri = jwt.verify(token, SECRET_KEY);
+    const email = veri.email;
     const { name, age, weight, height } = req.body;
-
-    if (!name || !age || !weight || !height) {
-      return res.status(400).send('Missing fields');
-    }
 
     await User.updateOne({ email }, { name, age, weight, height });
     res.redirect('/dashboard');
   } catch (err) {
     console.error(err);
-    res.status(400).send('Error saving info.');
+    res.send('Error saving info.');
   }
 });
 

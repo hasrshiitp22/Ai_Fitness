@@ -5,13 +5,11 @@
     list-style: none;
     box-sizing: border-box;        
     
-    
-    
 }
 
 nav{
     height : 80px;
-    /* background :#1b1b1b; */
+    background :#1b1b1b;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,13 +23,14 @@ nav .logo{
 }
 nav ul{
     display : flex;
+    
 
 }
 nav ul li{
     margin: 0 5px;
 }
 nav ul li a{
-    color : rgb(0, 0, 0);
+    color : rgb(255, 255, 255);
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;

@@ -115,8 +115,9 @@
 
   <script>
     const apiKey = '5442d5f5030f4596aa5c7356da6708fe';
-
+ 
     function generateMealPlan() {
+=
       const calories = document.getElementById('caloriesInput').value;
       if (!calories) return alert('Please enter calorie value');
 
