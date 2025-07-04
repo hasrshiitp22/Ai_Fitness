@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const User = require('../models/User');
 
-const SECRET_KEY = 'your_jwt_secret_key'; 
+const SECRET_KEY = 'Secret_key@123';
 
 
 router.post('/signup', async (req, res) => {

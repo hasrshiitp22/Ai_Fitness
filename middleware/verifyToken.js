@@ -1,10 +1,8 @@
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = process.env.JWT_SECRET || 'your_jwt_secret_key';
+const SECRET_KEY = 'Secret_key@123';
 
 module.exports = function (req, res, next) {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader?.split(' ')[1];
-
+  const token = req.headers['authorization']?.split(' ')[1];
   if (!token) return res.status(401).send('No token');
 
   try {

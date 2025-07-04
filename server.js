@@ -10,7 +10,7 @@ const authRoutes = require('./routes/auth');
 const verifyToken = require('./middleware/verifyToken');
 const connectDB = require('./config/db');
 const fs = require("fs");
-const SECRET_KEY = 'your_jwt_secret_key';
+const SECRET_KEY = 'Secret_key@123';
 
 const app = express();
 const port = 8080 || 3000;
@@ -81,13 +81,11 @@ app.get('/ToDoList', (req, res) => {
 app.post('/userinfo', async (req, res) => {
   const token = req.headers['authorization']?.split(' ')[1];
   if (!token) return res.send('No token');
-  
-  
+   
   try {
     const veri = jwt.verify(token, SECRET_KEY);
     const email = veri.email;
     const { name, age, weight, height } = req.body;
-
     await User.updateOne({ email }, { name, age, weight, height });
     res.redirect('/dashboard');
   } catch (err) {
@@ -96,19 +94,20 @@ app.post('/userinfo', async (req, res) => {
   }
 });
 
-// Profile data API (called by profile.html)
+
 app.get('/api/userinfo', verifyToken, async (req, res) => {
   try {
     const email = req.user.email;
     const user = await User.findOne({ email }, { password: 0, _id: 0, __v: 0 });
 
     if (!user) return res.status(404).send('User not found');
-    res.json(user);
+    res.json(user); 
   } catch (err) {
     console.error(err);
     res.send('Error fetching user info');
   }
 });
+
 
 
 

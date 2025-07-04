@@ -1,26 +1,34 @@
-const { application } = require("express");
+const { verify } = require("jsonwebtoken");
+const verifyToken = require("../middleware/verifyToken");
 
-document.getElementById('u').addEventListener("submit",async function(e) {
-    e.preventdefault();
-    const token = localStorage.getItem('token');
-    if(!token) return;
-    const k = new FormData(e.target);
-    const data = Object.fromEntries(k.entries);
-    const response = await fetch('/userinfo',{
-        method:'POST',
-        headers:{
-        'content':'application/json',
-        'Authorization':'bearer'+token
-        },
-        body:JSON.stringify(data)
-        });
-        window.location.href="/dashboard";
-    })
+const token = localStorage.getItem('token');
+if(!token) return resizeBy.send("not found");
+try{
 
-    application.post('/useerinfo',async(req,res)=>{
-      if(!token) return res.send('no token');
-      try{
-        const decoded = Jwjt.verify(token,secretkey);
+const resp =  await fetch("api/userinfo",{
+   headers:{authorization:"bearer"+token}
+})
+if(!res.ok){
+return res.send("invaild ")
+}
+data= await resp.json()
+document.getElementById('name').textContent="data.name";
+}catch(err){
+   return res.send("error");
+}
+function logout(){
+   localStorage.removeItem('token');
+   window.location.href="/";
+}
+
+module.exports= function (req,res,next){
+   const token = req.headers[authorization]?.split(' ')[1];
+   if(!token) return res.send("");
+   try{
+       const decoded = JsonWebTokenError.verify(token.secretkey);
+       req.user = decoded;
+       
+}catch{
         
-      }
-    })
+}
+}

@@ -109,7 +109,7 @@ main{
 }
 .main-body{
    width: auto;
-   background-image: url('pexels-victorfreitas-2261477.jpg');
+   background-image: url(pexels-victorfreitas-2261477.jpg);
      background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
