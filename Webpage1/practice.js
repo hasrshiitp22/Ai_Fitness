@@ -1,34 +1,27 @@
-const { verify } = require("jsonwebtoken");
-const verifyToken = require("../middleware/verifyToken");
+  document.getElementById('claves').addEventListener('click', () => {
+        const container = document.getElementById('gif-container');
+        container.innerHTML = `
+   <h2 class="work_title"> Claves Workouts</h2>
+    <ul style="color:white;display:flex; justify-content:space-evenly; gap:16px">
+      <nav>Ankle Pumps</nav>
+      <nav>Ankle Range of Motion</nav>
+      <nav>Knee to Chest</nav>
+    </ul>
+         <iframe 
+  src="https://www.youtube.com/embed/Eg0dW1R27v4?autoplay=1&mute=1&rel=0" 
+  width="600" 
+  height="315" 
+  frameborder="0" 
+  allow="autoplay; encrypted-media" 
+  allowfullscreen>
+</iframe>
 
-const token = localStorage.getItem('token');
-if(!token) return resizeBy.send("not found");
-try{
+  `;
+      });
 
-const resp =  await fetch("api/userinfo",{
-   headers:{authorization:"bearer"+token}
+document.getElementById('claves').addEventListener('click',()=>{
+    const container= document.getElementById('gif-container')
+    container.innerHTML=`
+    `
 })
-if(!res.ok){
-return res.send("invaild ")
-}
-data= await resp.json()
-document.getElementById('name').textContent="data.name";
-}catch(err){
-   return res.send("error");
-}
-function logout(){
-   localStorage.removeItem('token');
-   window.location.href="/";
-}
-
-module.exports= function (req,res,next){
-   const token = req.headers[authorization]?.split(' ')[1];
-   if(!token) return res.send("");
-   try{
-       const decoded = JsonWebTokenError.verify(token.secretkey);
-       req.user = decoded;
-       
-}catch{
-        
-}
-}
+  

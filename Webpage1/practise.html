@@ -1,0 +1,20 @@
+<body>
+  <h1>Generate a Diet Plan by Calories</h1>
+
+  <div class="input-section">
+    <input type="number" id="caloriesInput" placeholder="Enter target calories (e.g. 2000)">
+    <button onclick="generateMealPlan()">Generate Plan</button>
+  </div>
+
+  <div id="diet-plan"></div>
+
+  <script>
+    apikey="";
+     function key(){
+        const calorie = document.getElementById('calorie').value;
+        if(!calorie) return res.end('')
+        const apiuri = `https://api.spoonacular.com/mealplanner/generate?timeFrame=day&targetCalories=${calories}&apiKey=${apiKey}`;
+      fetch(apiuri)
+      .then
+     }
+  </script>

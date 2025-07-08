@@ -68,7 +68,6 @@ app.post('/contactUs', (req, res,next) => {
 `);
 });
 
-
 app.get('/profile',(req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'Profile', 'profile.html'));
 });
@@ -107,9 +106,6 @@ app.get('/api/userinfo', verifyToken, async (req, res) => {
     res.send('Error fetching user info');
   }
 });
-
-
-
 
 // Diet PDF download routes
 app.get('/1500_2000_calorie_meal_plan', (req, res) => {

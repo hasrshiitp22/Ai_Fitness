@@ -21,27 +21,7 @@
 
     
 
-    .click-zone {
-      position: absolute;
-      background-color: rgba(255, 0, 0, 0.3);
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .workout-box {
-      margin-top: 30px;
-      background-color: #fff;
-      padding: 0px;
-      display: inline-block;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .workout-box img {
-      width: 200px;
-      margin-top: 10px;
-      border-radius: 10px;
-    }
+   
 
     .icon path {
       fill: white;
@@ -75,9 +55,8 @@
 }
   .work_video{
      width: 450px;
-    background-color: aqua;
+    background-color: rgb(0, 0, 0);
 
   }
-    
   
    }

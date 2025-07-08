@@ -5,103 +5,99 @@
   <title>Calorie-Based Diet Plan</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f7fa;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
       margin: 0;
       padding: 20px;
     }
 
     h1 {
       text-align: center;
-      color: #2c3e50;
+      color: #333;
     }
 
     .input-section {
       text-align: center;
-      margin: 30px 0;
+      margin: 20px 0;
     }
 
     input[type="number"] {
-      padding: 8px 12px;
-      font-size: 16px;
+      padding: 8px;
       width: 200px;
-      margin-right: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      font-size: 16px;
     }
 
     button {
-      padding: 8px 14px;
+      padding: 8px 12px;
       font-size: 16px;
-      background-color: #27ae60;
+      background-color: #4CAF50;
       color: white;
       border: none;
-      border-radius: 6px;
       cursor: pointer;
+      margin-left: 10px;
     }
 
     button:hover {
-      background-color: #219150;
+      background-color: #45a049;
     }
 
     #diet-plan {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
+      justify-content: center;
+      margin-top: 30px;
     }
 
-    .meal {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+  .meal {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 300px;
 
-    .meal:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
+  transition: transform 0.3s ease, 
+}
+
 
     .meal img {
       width: 100%;
       height: auto;
-      display: block;
     }
 
     .meal-content {
-      padding: 15px;
+      padding: 10px;
     }
 
     .meal h2 {
-      font-size: 1.2rem;
-      color: #34495e;
+      font-size: 18px;
       margin: 0 0 10px;
+      color: #333;
     }
 
     .meal p {
-      margin: 0 0 10px;
-      color: #555;
+      margin: 5px 0;
+      color: #666;
     }
 
     .meal a {
       display: inline-block;
       margin-top: 10px;
-      text-decoration: none;
+      padding: 6px 10px;
+      background-color: #4CAF50;
       color: white;
-      background-color: #27ae60;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      transition: background-color 0.3s;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
     }
 
     .meal a:hover {
-      background-color: #219150;
+      background-color: #3e8e41; 
+
     }
+  
+  
   </style>
+
 </head>
 <body>
   <h1>Generate a Diet Plan by Calories</h1>
@@ -112,43 +108,44 @@
   </div>
 
   <div id="diet-plan"></div>
+<!-- Same HTML and CSS as before -->
+<script>
+  const apiKey = '5442d5f5030f4596aa5c7356da6708fe';
 
-  <script>
-    const apiKey = '5442d5f5030f4596aa5c7356da6708fe';
- 
-    function generateMealPlan() {
-=
-      const calories = document.getElementById('caloriesInput').value;
-      if (!calories) return alert('Please enter calorie value');
+  function generateMealPlan() {
+    const calories = document.getElementById('caloriesInput').value;
+    if (!calories) return alert('Please enter calorie value');
 
-      const apiUrl = `https://api.spoonacular.com/mealplanner/generate?timeFrame=day&targetCalories=${calories}&apiKey=${apiKey}`;
+    const apiUrl = `https://api.spoonacular.com/mealplanner/generate?timeFrame=day&targetCalories=${calories}&apiKey=${apiKey}`;
 
-      fetch(apiUrl)
-        .then(res => res.json())
-        .then(data => {
-          const container = document.getElementById('diet-plan');
-          container.innerHTML = ''; // clear previous
+    fetch(apiUrl)
+      .then(res => res.json()) // 
+      .then(data => {
+        const container = document.getElementById('diet-plan');
+        container.innerHTML = ''; 
 
-          data.meals.forEach(meal => {
-            const imageUrl = `https://spoonacular.com/recipeImages/${meal.id}-480x360.jpg`;
-            const mealDiv = document.createElement('div');
-            mealDiv.className = 'meal';
-            mealDiv.innerHTML = `
-              <img src="${imageUrl}" alt="${meal.title}">
-              <div class="meal-content">
-                <h2>${meal.title}</h2>
-                <p>Ready in ${meal.readyInMinutes} minutes | Servings: ${meal.servings}</p>
-                <a href="${meal.sourceUrl}" target="_blank">View Recipe</a>
-              </div>
-            `;
-            container.appendChild(mealDiv);
-          });
-        })
-        .catch(err => {
-          document.getElementById('diet-plan').innerHTML = '<p>Error loading diet plan.</p>';
-          console.error(err);
+        data.meals.forEach(meal => {
+          const imageUrl = `https://spoonacular.com/recipeImages/${meal.id}-480x360.jpg`;
+          const mealDiv = document.createElement('div');
+          mealDiv.className = 'meal';
+          mealDiv.innerHTML = `
+            <img src="${imageUrl}" alt="${meal.title}">
+            <div class="meal-content">
+              <h2>${meal.title}</h2>
+              <p>Ready in ${meal.readyInMinutes} minutes | Servings: ${meal.servings}</p>
+              <a href="${meal.sourceUrl}" target="_blank">View Recipe</a>
+            </div>
+          `;
+          container.appendChild(mealDiv);
         });
-    }
+      })
+      .catch(err => {
+        document.getElementById('diet-plan').innerHTML = '<p>Error loading diet plan.</p>';
+        console.error(err);
+      });
+  }
+</script>
+
   </script>
 </body>
 </html>
